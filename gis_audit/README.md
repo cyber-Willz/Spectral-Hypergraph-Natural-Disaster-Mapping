@@ -135,37 +135,7 @@ path enumeration in `provenance.rs` is exact/exhaustive, appropriate at
 county-graph depth/branching; see "Extending" below if you push `max_hops`
 much higher on the full ~3,100-county graph).
 
-## Extending feature coverage / next steps
 
-- `nri_features.rs`'s `FEATURE_NAMES` is a deliberately small starting
-  subset of NRI's ~130 columns; add more (per-hazard EAL for the other 16
-  hazard types, `AREA`, `BUILDVALUE`, etc.) the same way — by column name,
-  so it stays resilient to NRI's own column reordering across releases.
-- `provenance.rs` currently enumerates *all* non-backtracking paths up to
-  `max_hops` exactly (fine at county-graph scale/depth); for a much larger
-  or deeper graph, cap branching with a per-hop top-k beam instead of full
-  enumeration.
-- The [[spectral-dqg]] crate's `spectral_trace.rs` (heat-kernel spectral
-  trace) is a natural second audit signal — a "how spectrally central is
-  this source county to the target" score, independent of the trained
-  model's attention, worth adding as a corroborating column in
-  `AuditTrail` if a reviewer wants a non-model-dependent sanity check.
 
-## A dependency note (why `Cargo.lock` is shipped, and must stay)
 
-`burn-core 0.13.2` declares `bincode = "2.0.0-rc.3"` and calls a
-`bincode::serde` function that only exists in that pre-release. Cargo's
-caret-range semantics let that bare requirement also match a later
-*stable* `bincode 2.x` once one exists on crates.io (a real SemVer
-footgun: a caret req on a pre-release is satisfiable by the corresponding
-final release) — which breaks the build the moment the dependency tree is
-re-resolved from scratch (a fresh clone without `Cargo.lock`, or
-`cargo update`). This repo pins it two ways so it survives either failure
-mode independently: `gis_audit/Cargo.toml` adds an explicit
-`bincode = "=2.0.0-rc.3"` (exact, `default-features = false` so it doesn't
-also drag in `bincode_derive`, which needs a newer Rust edition than
-`nbsc`'s declared MSRV 1.75), and the shipped `Cargo.lock` pins the whole
-tree to the versions this was actually built and tested against. Don't
-delete `Cargo.lock` or run a bare `cargo update` (a scoped
-`cargo update -p <other-crate>` that leaves `bincode`/`bincode_derive`
-alone is fine).
+
