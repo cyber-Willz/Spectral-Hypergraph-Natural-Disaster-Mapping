@@ -18,8 +18,7 @@ federally-declared natural disaster — specifically, wildfire.
 ## What's live here (vs. the earlier illustrative sample)
  
 Two earlier examples in this crate (`flood_risk_audit`, `live_flood_audit`)
-run against a small **bundled, illustrative** 8-county dataset because the
-build sandbox can't reach `census.gov`/`fema.gov` directly. This run is
+run against a small **bundled, illustrative** 8-county dataset. This run is
 different: the county-level threat features below were fetched **live**
 from FEMA's public API during this session and are federally-declared,
 real-world fire disasters — not synthetic or illustrative data.
