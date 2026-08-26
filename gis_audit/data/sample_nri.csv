@@ -1,0 +1,16 @@
+# ILLUSTRATIVE / PLACEHOLDER VALUES — NOT official FEMA figures.
+# Shaped exactly like the real National Risk Index county CSV (same column
+# names) so the parser and pipeline can be exercised offline. Before any
+# real analysis, download the real table from:
+#   https://hazards.fema.gov/nri/data-resources  (Counties, CSV)
+# and swap this file for it — the parser in src/nri_features.rs reads both
+# identically since it matches by column name, not position.
+STCOFIPS,COUNTY,STATE,RISK_SCORE,EAL_VALT,RFLD_EALT,CFLD_EALT,SOVI_SCORE,RESL_SCORE,POPULATION
+48201,Harris,Texas,92.4,410000000,180000000,95000000,68.2,54.1,4731145
+48157,Fort Bend,Texas,71.3,52000000,31000000,2000000,41.0,61.5,858527
+48339,Montgomery,Texas,58.1,38000000,22000000,500000,35.4,58.9,657213
+48291,Liberty,Texas,49.7,9800000,7200000,300000,55.3,42.7,91628
+48071,Chambers,Texas,63.5,14200000,6100000,5300000,48.9,49.8,46571
+48167,Galveston,Texas,88.9,145000000,28000000,102000000,52.6,55.2,342139
+48039,Brazoria,Texas,79.2,96000000,41000000,38000000,44.1,57.0,372031
+48473,Waller,Texas,42.8,5100000,3900000,100000,58.7,39.4,56794

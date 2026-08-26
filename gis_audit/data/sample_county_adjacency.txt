@@ -1,0 +1,28 @@
+# ILLUSTRATIVE SAMPLE — a hand-picked subset (Houston-area Gulf Coast
+# counties) in the legacy Census county-adjacency format, for demoing the
+# pipeline offline. Verify/replace with the live file before any real
+# analysis: https://www2.census.gov/geo/docs/reference/county_adjacency.txt
+Harris County TX	48201	Fort Bend County TX	48157
+		Montgomery County TX	48339
+		Liberty County TX	48291
+		Chambers County TX	48071
+		Galveston County TX	48167
+		Brazoria County TX	48039
+		Waller County TX	48473
+Fort Bend County TX	48157	Harris County TX	48201
+		Waller County TX	48473
+		Brazoria County TX	48039
+Montgomery County TX	48339	Harris County TX	48201
+		Liberty County TX	48291
+Liberty County TX	48291	Harris County TX	48201
+		Montgomery County TX	48339
+		Chambers County TX	48071
+Chambers County TX	48071	Harris County TX	48201
+		Liberty County TX	48291
+Galveston County TX	48167	Harris County TX	48201
+		Brazoria County TX	48039
+Brazoria County TX	48039	Harris County TX	48201
+		Fort Bend County TX	48157
+		Galveston County TX	48167
+Waller County TX	48473	Harris County TX	48201
+		Fort Bend County TX	48157

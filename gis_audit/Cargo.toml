@@ -1,0 +1,40 @@
+[package]
+name = "gis_audit"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "Auditable GNN predictions over US GIS graphs (county adjacency + FEMA National Risk Index), built on nbsc's non-backtracking spectral convolution and GAT attention"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+nbsc = { path = "../nbsc", default-features = false }
+nalgebra = "0.32"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+burn = { version = "0.13", default-features = false, features = ["ndarray", "autodiff", "std"], optional = true }
+# Pinned exactly (not just via Cargo.lock): burn-core 0.13.2 depends on
+# `bincode = "2.0.0-rc.3"` and calls a bincode::serde function that only
+# exists in that pre-release. Cargo's caret-range semantics let that bare
+# version requirement match a later *stable* `bincode 2.x` release once one
+# is published (SemVer allows a caret req on a pre-release to be satisfied
+# by the corresponding final release) -- which silently breaks the burn-core
+# build the moment Cargo.lock is regenerated (`cargo update`, a fresh
+# checkout without the shipped lockfile, etc.). This explicit pin plus the
+# shipped Cargo.lock are both needed; the pin alone survives `cargo update`,
+# the lockfile alone survives a from-scratch resolve without this pin.
+bincode = { version = "=2.0.0-rc.3", optional = true, default-features = false }
+
+[features]
+default = ["live"]
+live = ["dep:burn", "dep:bincode", "nbsc/burn"]
+
+[dev-dependencies]
+
+[[example]]
+name = "live_flood_audit"
+required-features = ["live"]
+
+[[example]]
+name = "live_defense_threat_mapping"
+required-features = ["live"]

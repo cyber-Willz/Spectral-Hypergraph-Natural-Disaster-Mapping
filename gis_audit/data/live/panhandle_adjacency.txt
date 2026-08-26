@@ -1,0 +1,34 @@
+# Texas Panhandle county adjacency (real FIPS/GEOIDs), legacy Census format.
+# Restricted to the 10 counties that actually appear in the live OpenFEMA
+# fire-declaration pull below, to keep this a genuine live/real (not merely
+# sample) run without needing the full nationwide adjacency file.
+Potter County TX	48375	Randall County TX	48381
+		Armstrong County TX	48011
+		Carson County TX	48065
+		Moore County TX	48341
+Randall County TX	48381	Potter County TX	48375
+		Armstrong County TX	48011
+Armstrong County TX	48011	Randall County TX	48381
+		Potter County TX	48375
+		Carson County TX	48065
+		Donley County TX	48129
+Carson County TX	48065	Potter County TX	48375
+		Armstrong County TX	48011
+		Gray County TX	48179
+		Hutchinson County TX	48233
+		Roberts County TX	48393
+Gray County TX	48179	Carson County TX	48065
+		Roberts County TX	48393
+		Donley County TX	48129
+Donley County TX	48129	Armstrong County TX	48011
+		Gray County TX	48179
+Hutchinson County TX	48233	Carson County TX	48065
+		Roberts County TX	48393
+		Moore County TX	48341
+Roberts County TX	48393	Hutchinson County TX	48233
+		Carson County TX	48065
+		Gray County TX	48179
+		Hemphill County TX	48211
+Hemphill County TX	48211	Roberts County TX	48393
+Moore County TX	48341	Potter County TX	48375
+		Hutchinson County TX	48233
